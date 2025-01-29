@@ -31,60 +31,11 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding-top: 70px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .navbar-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .navbar-brand {
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .navbar-brand h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-bday {
-            color: #252525;
-            margin-right: 0.3rem;
-        }
-
-        .navbar-kids span:nth-child(odd) {
-            color: #7be3f2;
-        }
-
-        .navbar-kids span:nth-child(even) {
-            color: #ff9cc0;
         }
 
         .hero {
             background: var(--light-bg);
-            padding: 4rem 0;
+            padding: 4rem 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -107,12 +58,53 @@
         .brand {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .brand-logo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%; /* Mudado de 30px para 50% para fazer um círculo perfeito */
+            margin-bottom: 2rem;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            object-fit: contain;
+            /* Adicionando uma borda suave */
+            border: 2px solid rgba(255, 151, 183, 0.1); /* Usando a cor primary com transparência */
+        }
+
+        .brand-logo:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary); /* A borda fica mais visível no hover */
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle at center, 
+                rgba(255, 151, 183, 0.1) 0%,
+                transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
         }
 
         .brand h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 800;
         }
 
@@ -132,8 +124,9 @@
             font-size: clamp(1.1rem, 2vw, 1.25rem);
             color: var(--gray);
             max-width: 600px;
-            margin: 0 0 2rem 0;
+            margin: 0 auto 3rem;
             line-height: 1.8;
+            padding: 0 1rem;
         }
 
         .cta-button {
@@ -165,21 +158,23 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
-            margin: 4rem 0;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
         }
 
         .feature-card {
             background: white;
             border-radius: 30px;
             padding: 2.5rem;
-            text-align: left;
+            text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 2px solid transparent;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .feature-card:hover {
@@ -195,7 +190,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 0 2rem 0;
+            margin: 0 auto 2rem;
             transition: all 0.3s ease;
         }
 
@@ -301,63 +296,20 @@
             padding: 4rem 2rem;
             margin: 4rem auto;
             max-width: 1200px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .schedule::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 20%, var(--primary) 5%, transparent 10%),
-                radial-gradient(circle at 90% 80%, var(--secondary) 5%, transparent 10%);
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .schedule-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .schedule-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .schedule-header::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            margin: 1.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        .schedule-header h2 {
-            font-size: 2.5rem;
+        .schedule h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
             color: var(--text);
-            margin-bottom: 1rem;
-        }
-
-        .schedule-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            text-align: center;
         }
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -366,115 +318,23 @@
             padding: 2rem;
             border-radius: 24px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            transition: transform 0.3s ease;
             text-align: center;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .schedule-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .schedule-item:hover {
             transform: translateY(-5px);
-            border-color: rgba(255, 151, 183, 0.2);
         }
 
-        .schedule-item:hover::before {
-            opacity: 1;
-        }
-
-        .schedule-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--light-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .schedule-item:hover .schedule-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            transform: rotate(5deg) scale(1.1);
-        }
-
-        .schedule-icon i {
-            font-size: 28px;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .schedule-item:hover .schedule-icon i {
-            color: white;
-        }
-
-        .schedule-details h3 {
+        .schedule-item h3 {
             color: var(--text);
-            font-size: 1.4rem;
             margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .schedule-details p {
-            color: var(--gray);
             font-size: 1.2rem;
+        }
+
+        .schedule-item p {
+            color: var(--gray);
             font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .schedule-details .detail-extra {
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-top: 0.5rem;
-        }
-
-        .schedule-note {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1rem 2rem;
-            background: white;
-            border-radius: 100px;
-            display: inline-block;
-            position: relative;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .schedule-note i {
-            color: var(--primary);
-            margin-right: 0.5rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 4rem 0 2rem;
-            color: var(--text);
-            width: 100%;
-            padding: 0 1rem;
-            line-height: 1.1;
-        }
-
-        .section-title span {
-            display: inline-block;
-            margin-left: 0.5rem;
         }
 
         .map-section {
@@ -583,18 +443,6 @@
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .hero {
-                padding: 3rem 0;
-            }
-
-            .brand h1 {
-                font-size: clamp(2rem, 4vw, 3rem);
-            }
-
             .link-card {
                 flex-direction: column;
                 text-align: center;
@@ -610,38 +458,17 @@
             }
 
             .schedule {
-                margin: 2rem 1rem;
-                padding: 2rem 1rem;
+                margin: 4rem 1rem;
             }
 
-            .schedule-header h2 {
-                font-size: 2rem;
-            }
-
-            .schedule-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .schedule-item {
-                padding: 1.5rem;
-            }
-
-            .schedule-note {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title span {
-                display: block;
-                margin-left: 0;
-                margin-top: 0.2rem;
+            .map-section {
+                padding: 0 1rem;
             }
         }
 
         @media (max-width: 480px) {
             .features {
-                gap: 1.5rem;
+                padding: 0 1rem;
             }
 
             .feature-card {
@@ -652,38 +479,167 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 4rem 0 2rem;
+            color: var(--text);
+            width: 100%;
+            padding: 0 1rem;
+            line-height: 1.1;
+        }
+
+        .section-title span {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-title span {
+                display: block;
+                margin-left: 0;
+                margin-top: 0.2rem;
+            }
+        }
+        .schedule {
+            background: var(--light-bg);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .schedule-header h2 {
+            font-size: 2rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .schedule-header h2 i {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .schedule-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 2px solid transparent;
+        }
+
+        .schedule-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .schedule-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-bg);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover .schedule-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .schedule-icon i {
+            font-size: 24px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover .schedule-icon i {
+            color: white;
+        }
+
+        .schedule-content {
+            flex: 1;
+        }
+
+        .schedule-content h3 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .schedule-content p {
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .schedule-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .schedule {
+                margin: 4rem 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .schedule-item {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#" class="navbar-brand">
-                <h1>
-                    <span class="navbar-bday">B'Day</span>
-                    <span class="navbar-kids">
-                        <span>K</span><span>i</span><span>d</span><span>s</span>
-                    </span>
-                </h1>
-            </a>
-        </div>
-    </nav>
-
     <section class="hero">
-        <div class="container">
-            <div class="brand">
-                <h1>
-                    <span class="brand-bday">B'Day</span> 
-                    <span class="brand-kids">
-                        <span>K</span><span>i</span><span>d</span><span>s</span>
-                    </span>
-                </h1>
-                <p class="brand-description">
-                    Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e qualidade excepcional.
-                </p>
-                <a href="#contatos" class="cta-button">
-                    Fale Conosco <i class="fas fa-heart"></i>
-                </a>
-            </div>
+        <div class="brand">
+            <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
+            <h1>
+                <span class="brand-bday">B'Day</span> 
+                <span class="brand-kids">
+                    <span>K</span><span>i</span><span>d</span><span>s</span>
+                </span>
+            </h1>
+            <p class="brand-description">
+                Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e qualidade excepcional.
+            </p>
+            <a href="#contatos" class="cta-button">
+                Fale Conosco <i class="fas fa-heart"></i>
+            </a>
 
             <div class="features">
                 <div class="feature-card">
@@ -787,41 +743,36 @@
         </div>
 
         <section class="schedule">
-            <div class="schedule-content">
-                <div class="schedule-header">
-                    <h2>Horário de Atendimento</h2>
-                    <p>Estamos aqui para atender você e sua família com todo carinho e atenção que merecem</p>
-                </div>
-                
-                <div class="schedule-grid">
-                    <div class="schedule-item">
-                        <div class="schedule-icon">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <div class="schedule-details">
-                            <h3>Segunda a Sexta</h3>
-                            <p>09:00 às 19:00</p>
-                            <span class="detail-extra">Atendimento completo</span>
-                        </div>
+            <div class="schedule-header">
+                <h2>
+                    <i class="far fa-clock"></i>
+                    Horário de Atendimento
+                </h2>
+                <p class="schedule-subtitle">
+                    Estamos aqui para atender você com todo carinho e atenção
+                </p>
+            </div>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <div class="schedule-icon">
+                        <i class="fas fa-sun"></i>
                     </div>
-                    
-                    <div class="schedule-item">
-                        <div class="schedule-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div class="schedule-details">
-                            <h3>Sábados</h3>
-                            <p>09:00 às 13:00</p>
-                            <span class="detail-extra">Horário especial</span>
-                        </div>
+                    <div class="schedule-content">
+                        <h3>Segunda a Sexta</h3>
+                        <p>09:00 às 19:00</p>
                     </div>
                 </div>
-    
-                <div class="schedule-note">
-                    <i class="fas fa-info-circle"></i>
-                    Horários especiais em feriados. Consulte nossas redes sociais.
+                <div class="schedule-item">
+                    <div class="schedule-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="schedule-content">
+                        <h3>Sábados</h3>
+                        <p>09:00 às 13:00</p>
+                    </div>
                 </div>
             </div>
+            <p class="schedule-note">* Feriados podem ter horários especiais</p>
         </section>
 
         <section class="map-section" id="map-section">
@@ -843,22 +794,5 @@
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
-
-    <script>
-        const backToTop = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
 </body>
 </html>
