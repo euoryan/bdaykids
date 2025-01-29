@@ -31,11 +31,60 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            padding-top: 70px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .navbar-brand {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .navbar-brand h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-bday {
+            color: #252525;
+            margin-right: 0.3rem;
+        }
+
+        .navbar-kids span:nth-child(odd) {
+            color: #7be3f2;
+        }
+
+        .navbar-kids span:nth-child(even) {
+            color: #ff9cc0;
         }
 
         .hero {
             background: var(--light-bg);
-            padding: 4rem 1rem;
+            padding: 4rem 0;
             position: relative;
             overflow: hidden;
         }
@@ -58,53 +107,12 @@
         .brand {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .brand-logo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%; /* Mudado de 30px para 50% para fazer um círculo perfeito */
-            margin-bottom: 2rem;
-            background: white;
-            padding: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            object-fit: contain;
-            /* Adicionando uma borda suave */
-            border: 2px solid rgba(255, 151, 183, 0.1); /* Usando a cor primary com transparência */
-        }
-
-        .brand-logo:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary); /* A borda fica mais visível no hover */
-        }
-
-        .logo-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .logo-container::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: radial-gradient(circle at center, 
-                rgba(255, 151, 183, 0.1) 0%,
-                transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
+            max-width: 800px;
         }
 
         .brand h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-weight: 800;
         }
 
@@ -124,9 +132,8 @@
             font-size: clamp(1.1rem, 2vw, 1.25rem);
             color: var(--gray);
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 0 2rem 0;
             line-height: 1.8;
-            padding: 0 1rem;
         }
 
         .cta-button {
@@ -158,23 +165,21 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 4rem 0;
         }
 
         .feature-card {
             background: white;
             border-radius: 30px;
             padding: 2.5rem;
-            text-align: center;
+            text-align: left;
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 2px solid transparent;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .feature-card:hover {
@@ -190,7 +195,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 2rem;
+            margin: 0 0 2rem 0;
             transition: all 0.3s ease;
         }
 
@@ -290,218 +295,6 @@
             font-size: 0.95rem;
         }
 
-        .schedule {
-            background: var(--light-bg);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            margin: 4rem auto;
-            max-width: 1200px;
-        }
-
-        .schedule h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--text);
-            text-align: center;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .schedule-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-
-        .schedule-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .schedule-item h3 {
-            color: var(--text);
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .schedule-item p {
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        .map-section {
-            margin: 4rem auto;
-            text-align: center;
-            max-width: 1200px;
-            padding: 0 2rem;
-        }
-
-        .map-container {
-            margin: 2rem auto;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .map-button {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .map-button:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .map-button i {
-            margin-right: 0.8rem;
-        }
-
-        .footer {
-            background: var(--light-bg);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer p {
-            color: var(--gray);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--secondary);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: white;
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .link-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-
-            .link-icon {
-                margin: 0 auto 1rem;
-            }
-
-            .link-content {
-                width: 100%;
-            }
-
-            .schedule {
-                margin: 4rem 1rem;
-            }
-
-            .map-section {
-                padding: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .features {
-                padding: 0 1rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .schedule-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 4rem 0 2rem;
-            color: var(--text);
-            width: 100%;
-            padding: 0 1rem;
-            line-height: 1.1;
-        }
-
-        .section-title span {
-            display: inline-block;
-            margin-left: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .section-title span {
-                display: block;
-                margin-left: 0;
-                margin-top: 0.2rem;
-            }
-        }
         .schedule {
             background: var(--light-bg);
             border-radius: 30px;
@@ -669,7 +462,153 @@
             margin-right: 0.5rem;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 4rem 0 2rem;
+            color: var(--text);
+            width: 100%;
+            padding: 0 1rem;
+            line-height: 1.1;
+        }
+
+        .section-title span {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .map-section {
+            margin: 4rem auto;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .map-container {
+            margin: 2rem auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--text);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .map-button i {
+            margin-right: 0.8rem;
+        }
+
+        .footer {
+            background: var(--light-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--secondary);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .brand h1 {
+                font-size: clamp(2rem, 4vw, 3rem);
+            }
+
+            .link-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .link-icon {
+                margin: 0 auto 1rem;
+            }
+
+            .link-content {
+                width: 100%;
+            }
+
             .schedule {
                 margin: 2rem 1rem;
                 padding: 2rem 1rem;
@@ -692,25 +631,59 @@
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
+
+            .section-title span {
+                display: block;
+                margin-left: 0;
+                margin-top: 0.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="brand">
-            <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
-            <h1>
-                <span class="brand-bday">B'Day</span> 
-                <span class="brand-kids">
-                    <span>K</span><span>i</span><span>d</span><span>s</span>
-                </span>
-            </h1>
-            <p class="brand-description">
-                Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e qualidade excepcional.
-            </p>
-            <a href="#contatos" class="cta-button">
-                Fale Conosco <i class="fas fa-heart"></i>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <h1>
+                    <span class="navbar-bday">B'Day</span>
+                    <span class="navbar-kids">
+                        <span>K</span><span>i</span><span>d</span><span>s</span>
+                    </span>
+                </h1>
             </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="brand">
+                <h1>
+                    <span class="brand-bday">B'Day</span> 
+                    <span class="brand-kids">
+                        <span>K</span><span>i</span><span>d</span><span>s</span>
+                    </span>
+                </h1>
+                <p class="brand-description">
+                    Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e qualidade excepcional.
+                </p>
+                <a href="#contatos" class="cta-button">
+                    Fale Conosco <i class="fas fa-heart"></i>
+                </a>
+            </div>
 
             <div class="features">
                 <div class="feature-card">
@@ -872,7 +845,6 @@
     </a>
 
     <script>
-        // Adicione este script para o botão "Voltar ao topo"
         const backToTop = document.querySelector('.back-to-top');
         
         window.addEventListener('scroll', () => {
@@ -888,9 +860,5 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
-
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
 </body>
 </html>
