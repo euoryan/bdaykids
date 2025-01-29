@@ -508,29 +508,52 @@
             padding: 4rem 2rem;
             margin: 4rem auto;
             max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, var(--primary) 5%, transparent 10%),
+                radial-gradient(circle at 90% 80%, var(--secondary) 5%, transparent 10%);
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .schedule-content {
+            position: relative;
+            z-index: 2;
         }
 
         .schedule-header {
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .schedule-header::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
         }
 
         .schedule-header h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--text);
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
         }
 
-        .schedule-header h2 i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .schedule-subtitle {
+        .schedule-header p {
             color: var(--gray);
             font-size: 1.1rem;
             max-width: 600px;
@@ -539,9 +562,9 @@
 
         .schedule-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -552,33 +575,54 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            text-align: center;
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .schedule-item:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
+            border-color: rgba(255, 151, 183, 0.2);
+        }
+
+        .schedule-item:hover::before {
+            opacity: 1;
         }
 
         .schedule-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--light-bg);
-            border-radius: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .schedule-item:hover .schedule-icon {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transform: rotate(5deg) scale(1.1);
         }
 
         .schedule-icon i {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--primary);
             transition: all 0.3s ease;
         }
@@ -587,39 +631,66 @@
             color: white;
         }
 
-        .schedule-content {
-            flex: 1;
-        }
-
-        .schedule-content h3 {
+        .schedule-details h3 {
             color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
         }
 
-        .schedule-content p {
+        .schedule-details p {
             color: var(--gray);
+            font-size: 1.2rem;
             font-weight: 500;
-            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-details .detail-extra {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-top: 0.5rem;
         }
 
         .schedule-note {
             text-align: center;
-            margin-top: 2rem;
-            color: var(--gray);
-            font-size: 0.9rem;
-            font-style: italic;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 100px;
+            display: inline-block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .schedule-note i {
+            color: var(--primary);
+            margin-right: 0.5rem;
         }
 
         @media (max-width: 768px) {
             .schedule {
-                margin: 4rem 1rem;
+                margin: 2rem 1rem;
                 padding: 2rem 1rem;
+            }
+
+            .schedule-header h2 {
+                font-size: 2rem;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .schedule-item {
                 padding: 1.5rem;
+            }
+
+            .schedule-note {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -743,36 +814,41 @@
         </div>
 
         <section class="schedule">
-            <div class="schedule-header">
-                <h2>
-                    <i class="far fa-clock"></i>
-                    Horário de Atendimento
-                </h2>
-                <p class="schedule-subtitle">
-                    Estamos aqui para atender você com todo carinho e atenção
-                </p>
-            </div>
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <div class="schedule-icon">
-                        <i class="fas fa-sun"></i>
+            <div class="schedule-content">
+                <div class="schedule-header">
+                    <h2>Horário de Atendimento</h2>
+                    <p>Estamos aqui para atender você e sua família com todo carinho e atenção que merecem</p>
+                </div>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-item">
+                        <div class="schedule-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="schedule-details">
+                            <h3>Segunda a Sexta</h3>
+                            <p>09:00 às 19:00</p>
+                            <span class="detail-extra">Atendimento completo</span>
+                        </div>
                     </div>
-                    <div class="schedule-content">
-                        <h3>Segunda a Sexta</h3>
-                        <p>09:00 às 19:00</p>
+                    
+                    <div class="schedule-item">
+                        <div class="schedule-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="schedule-details">
+                            <h3>Sábados</h3>
+                            <p>09:00 às 13:00</p>
+                            <span class="detail-extra">Horário especial</span>
+                        </div>
                     </div>
                 </div>
-                <div class="schedule-item">
-                    <div class="schedule-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="schedule-content">
-                        <h3>Sábados</h3>
-                        <p>09:00 às 13:00</p>
-                    </div>
+    
+                <div class="schedule-note">
+                    <i class="fas fa-info-circle"></i>
+                    Horários especiais em feriados. Consulte nossas redes sociais.
                 </div>
             </div>
-            <p class="schedule-note">* Feriados podem ter horários especiais</p>
         </section>
 
         <section class="map-section" id="map-section">
@@ -790,6 +866,28 @@
         <p>© 2024 <strong>B'Day Kids</strong>. Todos os direitos reservados.</p>
         <p>Desenvolvido com ☕ por <a href="https://euoryan.com" target="_blank">Ryan</a></p>
     </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Adicione este script para o botão "Voltar ao topo"
+        const backToTop = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
