@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B'Day Kids Portal</title>
+    <link rel="icon" type="image/png" href="assets/image/favicon/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --pink: #ff9cc0;
+            --pink-light: #fff0f5;
+            --blue: #7ae3f2;
+            --blue-light: #f0faff;
+            --dark: #2a2a2a;
+            --gray: #667080;
+            --light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            padding: 3rem 1rem 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -5rem;
+            left: 0;
+            right: 0;
+            height: 6rem;
+            background: var(--light);
+            transform: skewY(-3deg);
+        }
+
+        .brand {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            background: white;
+            padding: 5px;
+            object-fit: cover;
+        }
+
+        .brand h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .brand-description {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .cta-button i {
+            margin-left: 0.5rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon i {
+            font-size: 28px;
+            color: var(--pink);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: var(--gray);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 4rem 0 2rem;
+            color: var(--dark);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--dark);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-card:hover {
+            border-color: var(--pink);
+            transform: translateY(-5px);
+        }
+
+        .link-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+        }
+
+        .link-icon i {
+            font-size: 28px;
+            color: var(--pink);
+        }
+
+        .link-content h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .link-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .schedule {
+            text-align: center;
+            background: linear-gradient(135deg, var(--pink-light), var(--blue-light));
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .schedule h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .schedule-item h3 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .schedule-item p {
+            color: var(--gray);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .brand h1 {
+                font-size: 2.5rem;
+            }
+
+            .brand-description {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .features {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 1.75rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="brand">
+            <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
+            <h1>B'Day Kids</h1>
+            <p class="brand-description">
+                Especialistas em moda infantil com mais de uma década dedicada a vestir seus pequenos com conforto, estilo e qualidade premium.
+            </p>
+            <a href="#contatos" class="cta-button">
+                Fale Conosco <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3 class="feature-title">Coleção Completa</h3>
+                    <p class="feature-description">
+                        Roupas e acessórios do Recém-Nascido ao tamanho 10, cuidadosamente selecionados para cada fase do desenvolvimento.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3 class="feature-title">Enxoval Completo</h3>
+                    <p class="feature-description">
+                        Enxovais personalizados e acessórios essenciais para bebês, com as melhores marcas do mercado.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="feature-title">Mundo Infantil</h3>
+                    <p class="feature-description">
+                        Brinquedos educativos e itens exclusivos para complementar o desenvolvimento do seu filho.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title" id="contatos">Conecte-se Conosco</h2>
+        
+        <div class="links-grid">
+            <a href="https://api.whatsapp.com/send?phone=5548991415788" class="link-card">
+                <div class="link-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="link-content">
+                    <h2>Atendimento</h2>
+                    <p>Consultoria personalizada para suas compras</p>
+                </div>
+            </a>
+
+            <a href="https://api.whatsapp.com/send?phone=554899905266" class="link-card">
+                <div class="link-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="link-content">
+                    <h2>Suporte Exclusivo</h2>
+                    <p>Assistência dedicada pós-venda</p>
+                </div>
+            </a>
+
+            <a href="https://lojabdaykids.com.br/" class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="link-content">
+                    <h2>E-commerce Oficial</h2>
+                    <p>Compre online com total segurança</p>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/bdaykidsmundoinfantil/" class="link-card">
+                <div class="link-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="link-content">
+                    <h2>Instagram Oficial</h2>
+                    <p>Tendências e novidades diárias</p>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/bdaykidsmodainfantil" class="link-card">
+                <div class="link-icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="link-content">
+                    <h2>Facebook Oficial</h2>
+                    <p>Conteúdo exclusivo e promoções</p>
+                </div>
+            </a>
+        </div>
+
+        <section class="schedule">
+            <h2>Horário de Atendimento</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <h3>Segunda a Sexta</h3>
+                    <p>09:00 às 19:00</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Sábados</h3>
+                    <p>09:00 às 13:00</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</body>
+</html>
