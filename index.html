@@ -1,685 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B'Day Kids Portal</title>
     <link rel="icon" type="image/png" href="assets/image/favicon/favicon.png">
+    <link rel="stylesheet" href="assets/image/docs/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #FF97B7;
-            --secondary: #6EC5FF;
-            --accent: #FFD053;
-            --background: #FFFFFF;
-            --text: #2A2A2A;
-            --gray: #667080;
-            --light-bg: #F8FAFC;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: var(--background);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .hero {
-            background: var(--light-bg);
-            padding: 4rem 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 20%, var(--primary) 10%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--secondary) 10%, transparent 20%),
-                radial-gradient(circle at 50% 50%, var(--accent) 5%, transparent 10%);
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .brand {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .brand-logo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%; /* Mudado de 30px para 50% para fazer um círculo perfeito */
-            margin-bottom: 2rem;
-            background: white;
-            padding: 8px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            object-fit: contain;
-            /* Adicionando uma borda suave */
-            border: 2px solid rgba(255, 151, 183, 0.1); /* Usando a cor primary com transparência */
-        }
-
-        .brand-logo:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary); /* A borda fica mais visível no hover */
-        }
-
-        .logo-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .logo-container::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: radial-gradient(circle at center, 
-                rgba(255, 151, 183, 0.1) 0%,
-                transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .brand h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .brand-bday {
-            color: #252525;
-        }
-
-        .brand-kids span:nth-child(odd) {
-            color: #7be3f2;
-        }
-
-        .brand-kids span:nth-child(even) {
-            color: #ff9cc0;
-        }
-
-        .brand-description {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-            padding: 0 1rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .cta-button i {
-            margin-left: 0.8rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 30px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--light-bg);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            transform: rotate(5deg);
-        }
-
-        .feature-icon i {
-            font-size: 32px;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon i {
-            color: white;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .feature-description {
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .link-card {
-            background: white;
-            border-radius: 30px;
-            padding: 2rem;
-            text-decoration: none;
-            color: var(--text);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            border: 2px solid transparent;
-            height: 100%;
-        }
-
-        .link-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .link-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--light-bg);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1.5rem;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .link-card:hover .link-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-
-        .link-icon i {
-            font-size: 24px;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover .link-icon i {
-            color: white;
-        }
-
-        .link-content {
-            flex: 1;
-        }
-
-        .link-content h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .link-content p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        .schedule {
-            background: var(--light-bg);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            margin: 4rem auto;
-            max-width: 1200px;
-        }
-
-        .schedule h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--text);
-            text-align: center;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .schedule-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
-
-        .schedule-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .schedule-item h3 {
-            color: var(--text);
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .schedule-item p {
-            color: var(--gray);
-            font-weight: 500;
-        }
-
-        .map-section {
-            margin: 4rem auto;
-            text-align: center;
-            max-width: 1200px;
-            padding: 0 2rem;
-        }
-
-        .map-container {
-            margin: 2rem auto;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .map-button {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .map-button:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .map-button i {
-            margin-right: 0.8rem;
-        }
-
-        .footer {
-            background: var(--light-bg);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: auto;
-        }
-
-        .footer p {
-            color: var(--gray);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: var(--secondary);
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: white;
-            color: var(--primary);
-            width: 50px;
-            height: 50px;
-            border-radius: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .link-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-
-            .link-icon {
-                margin: 0 auto 1rem;
-            }
-
-            .link-content {
-                width: 100%;
-            }
-
-            .schedule {
-                margin: 4rem 1rem;
-            }
-
-            .map-section {
-                padding: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .features {
-                padding: 0 1rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .schedule-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 4rem 0 2rem;
-            color: var(--text);
-            width: 100%;
-            padding: 0 1rem;
-            line-height: 1.1;
-        }
-
-        .section-title span {
-            display: inline-block;
-            margin-left: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .section-title span {
-                display: block;
-                margin-left: 0;
-                margin-top: 0.2rem;
-            }
-        }
-        .schedule {
-            background: var(--light-bg);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            margin: 4rem auto;
-            max-width: 1200px;
-        }
-
-        .schedule-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .schedule-header h2 {
-            font-size: 2rem;
-            color: var(--text);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .schedule-header h2 i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .schedule-subtitle {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .schedule-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            border: 2px solid transparent;
-        }
-
-        .schedule-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .schedule-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--light-bg);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .schedule-item:hover .schedule-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-
-        .schedule-icon i {
-            font-size: 24px;
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .schedule-item:hover .schedule-icon i {
-            color: white;
-        }
-
-        .schedule-content {
-            flex: 1;
-        }
-
-        .schedule-content h3 {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .schedule-content p {
-            color: var(--gray);
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        .schedule-note {
-            text-align: center;
-            margin-top: 2rem;
-            color: var(--gray);
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .schedule {
-                margin: 4rem 1rem;
-                padding: 2rem 1rem;
-            }
-
-            .schedule-item {
-                padding: 1.5rem;
-            }
-        }
-    </style>
 </head>
+
 <body>
     <section class="hero">
         <div class="brand">
-            <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
+            <div class="logo-container">
+                <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
+            </div>
             <h1>
-                <span class="brand-bday">B'Day</span> 
+                <span class="brand-bday">B'Day</span>
                 <span class="brand-kids">
                     <span>K</span><span>i</span><span>d</span><span>s</span>
                 </span>
             </h1>
             <p class="brand-description">
-                Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e qualidade excepcional.
+                Seu destino premium para moda infantil. Mais de uma década vestindo pequenos com estilo, conforto e
+                qualidade excepcional.
             </p>
             <a href="#contatos" class="cta-button">
                 Fale Conosco <i class="fas fa-heart"></i>
             </a>
+        </div>
 
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <h3 class="feature-title">Moda Infantil</h3>
-                    <p class="feature-description">
-                        Do RN ao tamanho 10, roupas e acessórios que acompanham cada fase do desenvolvimento.
-                    </p>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tshirt"></i>
                 </div>
+                <h3 class="feature-title">Moda Infantil</h3>
+                <p class="feature-description">
+                    Do RN ao tamanho 10, roupas e acessórios que acompanham cada fase do desenvolvimento.
+                </p>
+            </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-baby"></i>
-                    </div>
-                    <h3 class="feature-title">Enxoval Bebê</h3>
-                    <p class="feature-description">
-                        Enxovais personalizados com as melhores marcas para o conforto do seu bebê.
-                    </p>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-baby"></i>
                 </div>
+                <h3 class="feature-title">Enxoval Bebê</h3>
+                <p class="feature-description">
+                    Enxovais personalizados com as melhores marcas para o conforto do seu bebê.
+                </p>
+            </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <h3 class="feature-title">Brinquedos</h3>
-                    <p class="feature-description">
-                        Brinquedos educativos e itens exclusivos para estimular o desenvolvimento.
-                    </p>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-puzzle-piece"></i>
                 </div>
+                <h3 class="feature-title">Brinquedos</h3>
+                <p class="feature-description">
+                    Brinquedos educativos e itens exclusivos para estimular o desenvolvimento.
+                </p>
             </div>
         </div>
     </section>
 
     <main>
         <h2 class="section-title" id="contatos">
-            Conecte-se<span>Conosco</span>
+            Conecte-se <span>Conosco</span>
         </h2>
-        
+
         <div class="links-grid">
             <a href="https://api.whatsapp.com/send?phone=5548991415788" class="link-card">
                 <div class="link-icon">
@@ -744,10 +133,7 @@
 
         <section class="schedule">
             <div class="schedule-header">
-                <h2>
-                    <i class="far fa-clock"></i>
-                    Horário de Atendimento
-                </h2>
+                <h2>Horário de Atendimento</h2>
                 <p class="schedule-subtitle">
                     Estamos aqui para atender você com todo carinho e atenção
                 </p>
@@ -778,7 +164,9 @@
         <section class="map-section" id="map-section">
             <h2>Nossa Localização</h2>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14143.494554156272!2d-48.6473728!3d-27.597446949999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95274b59074d39bd%3A0xb2b6530b57b0975c!2sB&#39;Day%20Kids%20Mundo%20Infantil!5e0!3m2!1spt-BR!2sbr!4v1738114796319!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14143.494554156272!2d-48.6473728!3d-27.597446949999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95274b59074d39bd%3A0xb2b6530b57b0975c!2sB&#39;Day%20Kids%20Mundo%20Infantil!5e0!3m2!1spt-BR!2sbr!4v1738114796319!5m2!1spt-BR!2sbr"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <a href="https://maps.app.goo.gl/6xqG7p5L9SF7BCEe8" target="_blank" class="map-button">
                 <i class="fas fa-map-marker-alt"></i> Abrir no Google Maps
@@ -794,5 +182,18 @@
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
+
+    <script>
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
+
 </html>
