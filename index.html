@@ -35,8 +35,8 @@
 
         /* Hero Section Modernization */
         .hero {
-            background: var(--light-bg);
-            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 5rem 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -46,10 +46,10 @@
             position: absolute;
             inset: 0;
             background: 
-                radial-gradient(circle at 10% 20%, var(--primary) 10%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--secondary) 10%, transparent 20%),
-                radial-gradient(circle at 50% 50%, var(--accent) 5%, transparent 10%);
-            opacity: 0.1;
+                radial-gradient(circle at 10% 20%, var(--primary) 15%, transparent 25%),
+                radial-gradient(circle at 90% 80%, var(--secondary) 15%, transparent 25%),
+                radial-gradient(circle at 50% 50%, var(--accent) 10%, transparent 15%);
+            opacity: 0.15;
             z-index: 1;
         }
 
@@ -59,11 +59,15 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .logo-container {
             display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             position: relative;
         }
 
@@ -72,11 +76,11 @@
             aspect-ratio: 1;
             border-radius: 50%;
             background: white;
-            padding: 8px;
+            padding: 12px;
             object-fit: contain;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            border: 2px solid rgba(255, 151, 183, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
+            border: 3px solid rgba(255, 151, 183, 0.2);
         }
 
         .brand-logo:hover {
@@ -85,10 +89,10 @@
         }
 
         .brand h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 1rem;
+            font-size: clamp(2.8rem, 5vw, 3.5rem);
+            margin: 0;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .brand-bday {
@@ -104,13 +108,33 @@
         }
 
         .brand-description {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-            padding: 0 1rem;
-        }
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0.5rem auto 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.brand-highlights {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+}
+
+.highlight-item i {
+    color: var(--primary);
+}
 
         /* Features Section with Grid Optimization */
         .features {
@@ -505,52 +529,66 @@
             padding-inline: 1rem;
         }
         .cta-button {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--text);
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-        }
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(
+        270deg,
+        var(--primary) 0%,
+        var(--secondary) 50%,
+        var(--primary) 100%
+    );
+    background-size: 200% auto;
+    color: #fff;
+    padding: 1.2rem 2.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 15px 40px rgba(110, 197, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.3s ease;
+    margin-top: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
 
-        .cta-button i {
-            margin-left: 0.5rem; /* Adiciona um espaço à esquerda do ícone */
-        }
+.cta-button i {
+    font-size: 1.4rem;
+}
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
+.cta-button:hover {
+    transform: translateY(-5px);
+    background-position: right center;
+    box-shadow: 0 20px 50px rgba(110, 197, 255, 0.4);
+}
     </style>
 </head>
 
 <body>
-    <section class="hero">
-        <div class="brand">
-            <div class="logo-container">
-                <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
-            </div>
-            <h1>
-                <span class="brand-bday">B'Day</span>
-                <span class="brand-kids">
-                    <span>K</span><span>i</span><span>d</span><span>s</span>
-                </span>
-            </h1>
-            <p class="brand-description">
-                8 anos criando memórias inesquecíveis!
-            </p>
-            <a href="https://lojabdaykids.com.br/" class="cta-button">
-                Ver Loja<i class="fas fa-shop"></i>
-            </a>
+    <div class="brand">
+        <div class="logo-container">
+            <img src="assets/image/logo/logo-original.png" alt="B'Day Kids" class="brand-logo">
         </div>
-    </section>
+        <h1>
+            <span class="brand-bday">B'Day</span>
+            <span class="brand-kids">
+                <span>K</span><span>i</span><span>d</span><span>s</span>
+            </span>
+        </h1>
+        <p class="brand-description">
+            Sua loja especializada em moda infantil para momentos especiais
+        </p>
+        <div class="brand-highlights">
+            <span class="highlight-item">
+                <i class="fas fa-heart"></i> Desde 2016
+            </span>
+            <span class="highlight-item">
+                <i class="fas fa-gem"></i> Produtos Exclusivos
+            </span>
+        </div>
+        <a href="https://lojabdaykids.com.br/" class="cta-button">
+            Acesse nossa Loja Online <i class="fas fa-store"></i>
+        </a>
+    </div>
 
     <main class="container">
         <h2 class="section-title" id="contatos">
@@ -558,7 +596,7 @@
         </h2>
 
         <div class="links-grid">
-            <a href="https://api.whatsapp.com/send?phone=554899905266" class="link-card">
+            <a href="https://api.whatsapp.com/send?phone=554891415788" class="link-card">
                 <div class="link-icon">
                     <i class="fab fa-whatsapp"></i>
                 </div>
@@ -591,7 +629,7 @@
 
         <main class="container">
             <h2 class="section-title" id="contatos">
-                Nossos <span>Mimos</span>
+                Linha de <span>Produtos</span>
             </h2>
 
         <section class="features">
