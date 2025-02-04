@@ -536,145 +536,129 @@
         }
 
         .cta-button {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.2rem 2.5rem;
-            background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
-            background-size: 300% 300%;
-            color: white;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-            /* Tamanho de fonte responsivo */
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            border: none;
-            text-transform: uppercase;
-            animation: gradientShift 8s infinite, pulse 2s infinite;
-            cursor: pointer;
-            min-width: min-content;
-            /* Garante largura mínima baseada no conteúdo */
-            white-space: nowrap;
-            /* Previne quebra de linha */
-        }
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
+    background-size: 300% 300%;
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: none;
+    text-transform: uppercase;
+    animation: gradientShift 8s infinite, pulse 2s infinite;
+    cursor: pointer;
+    white-space: nowrap; /* Impede quebra de linha */
+    min-width: min-content; /* Garante largura mínima baseada no conteúdo */
+}
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
-            background-size: 400% 400%;
-            animation: gradientShift 8s infinite;
-            border-radius: 14px;
-            z-index: -2;
-        }
+.cta-button::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
+    background-size: 400% 400%;
+    animation: gradientShift 8s infinite;
+    border-radius: 14px;
+    z-index: -2;
+}
 
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
-            background-size: 400% 400%;
-            animation: gradientShift 8s infinite;
-            border-radius: 12px;
-            z-index: -1;
-            transition: 0.5s ease;
-        }
+.cta-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #FF97B7, #6EC5FF, #FF97B7, #6EC5FF);
+    background-size: 400% 400%;
+    animation: gradientShift 8s infinite;
+    border-radius: 12px;
+    z-index: -1;
+    transition: 0.5s ease;
+}
 
-        .cta-button i {
-            margin-left: 0.7rem;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-            /* Previne o ícone de encolher */
-        }
+.cta-button i {
+    margin-left: 0.7rem;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Impede que o ícone encolha */
+}
 
-        /* Glow Effect */
-        .cta-button::before {
-            filter: blur(8px);
-        }
+/* Glow Effect */
+.cta-button::before {
+    filter: blur(8px);
+}
 
-        /* Mouse Follow Effect (Desktop Only) */
-        @media (hover: hover) {
-            .cta-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 25px rgba(110, 197, 255, 0.4);
-            }
+/* Mouse Follow Effect (Desktop Only) */
+@media (hover: hover) {
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(110, 197, 255, 0.4);
+    }
 
-            .cta-button:hover i {
-                transform: translateX(3px);
-            }
+    .cta-button:hover i {
+        transform: translateX(3px);
+    }
 
-            .cta-button:hover::before {
-                filter: blur(12px);
-            }
-        }
+    .cta-button:hover::before {
+        filter: blur(12px);
+    }
+}
 
-        /* Mobile Enhancement */
-        @media (max-width: 480px) {
-            .cta-button {
-                width: auto;
-                /* Remove largura fixa */
-                min-width: min-content;
-                /* Garante largura mínima baseada no conteúdo */
-                max-width: 100%;
-                /* Previne overflow horizontal */
-                margin: 0 auto;
-                padding: 1rem 1.5rem;
-                /* Padding reduzido para mobile */
-                font-size: 0.9rem;
-                /* Tamanho fixo para mobile */
-                display: inline-flex;
-                /* Mantém o layout inline */
-                text-align: center;
-                /* Centraliza o texto */
-            }
+/* Mobile Enhancement */
+@media (max-width: 480px) {
+    .cta-button {
+        width: auto; /* Remove largura fixa */
+        max-width: none; /* Remove limite máximo */
+        margin: 0 1rem; /* Adiciona margem lateral */
+        padding: 1rem 1.5rem; /* Reduz padding */
+        font-size: 0.9rem; /* Reduz tamanho da fonte */
+        letter-spacing: 0.3px; /* Ajusta espaçamento das letras */
+    }
 
-            .cta-button i {
-                margin-left: 0.5rem;
-                /* Reduz margem do ícone no mobile */
-            }
+    .cta-button i {
+        margin-left: 0.5rem; /* Reduz margem do ícone */
+        font-size: 1rem; /* Reduz tamanho do ícone */
+    }
 
-            /* Container para centralizar o botão */
-            .brand {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+    /* Container para centralização */
+    .brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+    }
+}
 
-        /* Animations */
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
+/* Animations */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(110, 197, 255, 0.4);
-            }
-
-            70% {
-                box-shadow: 0 0 0 10px rgba(110, 197, 255, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(110, 197, 255, 0);
-            }
-        }
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(110, 197, 255, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(110, 197, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(110, 197, 255, 0);
+    }
+}
     </style>
 </head>
 
@@ -691,13 +675,13 @@
         </h1>
         <p class="brand-description">
             Vestindo momentos especiais.
-        </p>
+        </p>        
         <div class="brand-highlights">
             <span class="highlight-item">
                 <i class="fas fa-heart"></i> Desde 2016
             </span>
             <span class="highlight-item">
-                <i class="fas fa-gem"></i> Produtos Personalizáveis
+                <i class="fas fa-gem"></i> Peças Personalizáveis
             </span>
         </div>
         <a href="https://lojabdaykids.com.br/" class="cta-button" target="_blank">
