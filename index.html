@@ -593,17 +593,17 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 480px) {
-            .cta-button {
-                width: 100%;
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .cta-button i {
-                margin-left: 0.5rem;
-                font-size: 1.1rem;
-            }
-        }
+    .cta-button {
+        width: 90%; /* Reduz para 90% da largura do container */
+        margin: 0 auto; /* Centraliza o botão */
+        display: flex;
+        justify-content: center;
+        white-space: nowrap; /* Impede a quebra do texto */
+        overflow: hidden; /* Esconde se ultrapassar */
+        text-overflow: ellipsis; /* Adiciona reticências se cortar */
+        max-width: 350px; /* Largura máxima opcional */
+    }
+}
     </style>
 </head>
 
