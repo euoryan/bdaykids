@@ -547,7 +547,8 @@
             border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            /* Tamanho de fonte responsivo */
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             overflow: hidden;
@@ -555,6 +556,10 @@
             text-transform: uppercase;
             animation: gradientShift 8s infinite, pulse 2s infinite;
             cursor: pointer;
+            min-width: min-content;
+            /* Garante largura mínima baseada no conteúdo */
+            white-space: nowrap;
+            /* Previne quebra de linha */
         }
 
         .cta-button::before {
@@ -584,6 +589,8 @@
             margin-left: 0.7rem;
             font-size: 1.2rem;
             transition: transform 0.3s ease;
+            flex-shrink: 0;
+            /* Previne o ícone de encolher */
         }
 
         /* Glow Effect */
@@ -610,11 +617,33 @@
         /* Mobile Enhancement */
         @media (max-width: 480px) {
             .cta-button {
-                width: 90%;
-                max-width: 350px;
+                width: auto;
+                /* Remove largura fixa */
+                min-width: min-content;
+                /* Garante largura mínima baseada no conteúdo */
+                max-width: 100%;
+                /* Previne overflow horizontal */
                 margin: 0 auto;
-                padding: 1rem 2rem;
-                font-size: 1rem;
+                padding: 1rem 1.5rem;
+                /* Padding reduzido para mobile */
+                font-size: 0.9rem;
+                /* Tamanho fixo para mobile */
+                display: inline-flex;
+                /* Mantém o layout inline */
+                text-align: center;
+                /* Centraliza o texto */
+            }
+
+            .cta-button i {
+                margin-left: 0.5rem;
+                /* Reduz margem do ícone no mobile */
+            }
+
+            /* Container para centralizar o botão */
+            .brand {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
         }
 
@@ -623,9 +652,11 @@
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
@@ -635,9 +666,11 @@
             0% {
                 box-shadow: 0 0 0 0 rgba(110, 197, 255, 0.4);
             }
+
             70% {
                 box-shadow: 0 0 0 10px rgba(110, 197, 255, 0);
             }
+
             100% {
                 box-shadow: 0 0 0 0 rgba(110, 197, 255, 0);
             }
@@ -658,7 +691,7 @@
         </h1>
         <p class="brand-description">
             Vestindo momentos especiais.
-        </p>        
+        </p>
         <div class="brand-highlights">
             <span class="highlight-item">
                 <i class="fas fa-heart"></i> Desde 2016
